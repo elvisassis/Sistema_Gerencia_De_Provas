@@ -5,11 +5,12 @@
  * Date: 15/02/17
  * Time: 21:02
  */
-include __DIR__."/config.php";
-include SITE_ROOT . "/App/Control/ProfessorController.php";
-use App\Control\ProfessorController;
-
-$teste = new ProfessorController();
-$teste->Request();
-
+$vetor= array();
+$vetor=[1,2,3,4,5];
+foreach ($vetor as $chave => $valor){
+    $i = 0;
+    echo 'Valor vetor '.$valor .'<br/>';
+    echo 'Valor da chave '.$chave.'<br/>';
+    ++$i;
+}
 

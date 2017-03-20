@@ -18,23 +18,41 @@ define('PASSWORD', 'Admin123');
 class DataSource
 {
 
-
-    private $conn;
-
-    /**
-     * conexao constructor.
-     */
-    public function __construct()
+    # Variável que guarda a conexão PDO.
+    protected static $conn;
+    # Private construct - garante que a classe só possa ser instanciada internamente.
+    private function __construct()
     {
-    }
-
-    public function conexao()
-    {
-        try {
-            $this->conn = new \PDO('mysql:host=localhost; port=3306; dbname=sgp', 'root', 'Admin123');
-        } catch (\PDOException $e) {
+        # Informações sobre o banco de dados:
+        $conn_host = "localhost";
+        $conn_nome = "sgp";
+        $conn_usuario = "root";
+        $conn_senha = "Admin123";
+        $conn_driver = "mysql";
+        try
+        {
+            # Atribui o objeto PDO à variável $conn.
+            self::$conn = new \PDO("$conn_driver:host=$conn_host; dbname=$conn_nome", $conn_usuario, $conn_senha);
+            # Garante que o PDO lance exceções durante erros.
+            self::$conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            # Garante que os dados sejam armazenados com codificação UFT-8.
+            //self::$conn->exec('SET NAMES utf8');
+        }
+        catch (\PDOException $e)
+        {
             echo "Erro!: " . $e->getMessage();
         }
-        return $this->conn;
     }
+    # Método estático - acessível sem instanciação.
+    public static function conexao()
+    {
+        # Garante uma única instância. Se não existe uma conexão, criamos uma nova.
+        if (!self::$conn)
+        {
+            new DataSource();
+        }
+        # Retorna a conexão.
+        return self::$conn;
+    }
+
 }

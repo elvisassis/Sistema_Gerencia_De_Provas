@@ -20,9 +20,9 @@ if (empty($email) || empty($senha))
 //$passwordHash = make_hash($password);
 
 $pdo = null;
-$pdo = new DataSource();
+//$pdo = DataSource()::conexao();
 $sql = "SELECT idProf, nomeProf FROM Professor WHERE emailProf = ? AND senhaProf = ?";
-$pd = $pdo->conexao();
+$pd = DataSource::conexao();
 $stm = $pd->prepare($sql);
 $stm->bindParam(1, $email);
 $stm->bindParam(2, $senha);

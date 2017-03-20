@@ -30,7 +30,7 @@ include_once SITE_ROOT."/chek.php";
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Avaliaçoes
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Prova</a></li>
+                    <li><a href="CadastroProva.php">Prova</a></li>
                     <li><a href="#">Lista de exercios</a></li>
                     <li><a href="#">Simulados</a></li>
                 </ul>
@@ -39,7 +39,7 @@ include_once SITE_ROOT."/chek.php";
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Extras
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="CadastroQuestoes.php">Questões</a></li>
+                    <li><a href="ListagemQuestao.php">Questões</a></li>
                     <li><a href="#">Gabritos</a></li>
                     <li><a href="ListagemDisciplina.php">Disciplina</a></li>
                 </ul>

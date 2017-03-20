@@ -1,4 +1,5 @@
-<?php include_once "Header.php"; ?>
+<?php include_once "Header.php";
+include_once SITE_ROOT."/App/Model/DisciplinaService.php"?>
 <!-- MODAL -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
     <div class="modal-dialog" role="document">
@@ -33,7 +34,7 @@
 
                 <form class="navbar-form navbar-left" role="search" method="POST" action="#">
                     <div class="form-group">
-                        <input type="text" name="nome" class="form-control" placeholder="Curso">
+                        <input type="text" name="nome" class="form-control" placeholder="Disciplina">
                     </div>
                     <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
@@ -70,18 +71,23 @@
                         <th>Nome</th>
                         <th></th>
                     </tr>
+                    <?php $id = $_SESSION['prof_id'];
+                    $disciplina = new \App\Model\DisciplinaService();  ?>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>358</></td>
-                            <td>Engenharia de software</></td>
-                            <td></></td>
+                            <?php $row = $disciplina->listarDisciplina($id);?>
+                            <?php foreach ($row as $chave){?>
+                            <td><?php echo $chave['codDisci'];?></td>
+                            <td><?php echo $chave['nomeDisci'];?></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td width="20px"><a href="#"><span class="glyphicon glyphicon-trash" style="color:red" title="Excluir"  aria-hidden="true"></span></a></td>
                             <td width="20px"><a href="CadastroDisciplina.php" label= "Editar" ><span class="glyphicon glyphicon-pencil" title="Editar" aria-hidden="true"/></a></td>
                         </tr>
+                        <?php }?>
                     <tr>
                         <td></td>
                         <td></td>

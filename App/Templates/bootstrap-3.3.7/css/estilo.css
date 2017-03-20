@@ -54,3 +54,8 @@ body {
 .container{
     width: 100%;
 }
+
+#textAreaId{
+    overflow-y: scroll;
+    resize: none;
+}

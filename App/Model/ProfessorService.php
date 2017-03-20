@@ -17,7 +17,7 @@ class ProfessorService{
     private $pdo = null;
 
     public function __construct(){
-        $this->pdo = new DataSource;
+        //$this->pdo = new DataSource;
     }
 
     public function gravarProfessor(Professor $professor){
@@ -27,13 +27,12 @@ class ProfessorService{
 
         try{
             $sql = ("INSERT INTO Professor (nomeProf, emailProf, senhaProf) VALUES (?,?,?);");
-            $pd = $this->pdo->conexao();
+            $pd = DataSource::conexao();
             $stm = $pd->prepare($sql);
             $stm->bindParam(1, $nome);
             $stm->bindParam(2, $email);
             $stm->bindParam(3, $senha);
             $stm->execute();
-            echo "ok";
         }
         catch (\PDOException $e){
             echo "Erro :".$e->getMessage()."<br>";
